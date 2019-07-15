@@ -29,9 +29,9 @@ export class ArticleReleaseComponent implements OnInit {
 
   preview: any; // 预览markdown文件
 
-  constructor(private fb: FormBuilder, private service: CommonService) {}
+  constructor(private fb: FormBuilder, private service: CommonService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleChange(checked: boolean, tag: string): void {
     if (checked) {
@@ -63,20 +63,20 @@ export class ArticleReleaseComponent implements OnInit {
 
   onSubmit() {
     console.log(this.articleForm.value);
-    this.service.post("/create", this.articleForm.value).subscribe(res => {
+    this.service.postData("/create", this.articleForm.value).subscribe(res => {
       console.log(res);
     });
   }
 
   getArticleList() {
-    this.service.get("/articleList").subscribe(res => {
+    this.service.getData("/articleList").subscribe(res => {
       console.log(res);
     });
   }
 
   getArticleDetail() {
     this.service
-      .get("/articleDetail", { id: "5bee87165cdc81033c164c4a" })
+      .getData("/articleDetail", { id: "5bee87165cdc81033c164c4a" })
       .subscribe(res => {
         console.log(res);
       });

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,17 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class CommonService {
   // PREFIX_API = `http://localhost:8080/api`;
-  // PREFIX_API = `http://xlss.link/api`;
   PREFIX_API = `http://yapi.demo.qunar.com/mock/29990/api`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  public post(api, params: any) {
-    const _this = this;
+  public postData(api: string, params: any) {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain');
     return Observable.create(observer => {
-      _this.http
-        .post(_this.PREFIX_API + api, params, {
+      this.http
+        .post(this.PREFIX_API + api, params, {
           headers,
           withCredentials: true
         })
@@ -28,24 +26,23 @@ export class CommonService {
           err => {
             observer.error(err);
           },
-          () => {}
+          () => { }
         );
     });
   }
 
-  public get(api, params?: object) {
-    const _this = this;
+  public getData(api: string, params?: object) {
     if (params) {
       let p = '?';
       for (const key of Object.keys(params)) {
         p += key + '=' + params[key] + '&';
       }
-      api += p.substr(0, p.length - 1);
+      api += p.substring(0, p.length - 1);
     }
 
     return Observable.create(observer => {
-      _this.http
-        .get(_this.PREFIX_API + api, { withCredentials: true })
+      this.http
+        .get(this.PREFIX_API + api, { withCredentials: true })
         .subscribe(
           (res: any) => {
             observer.next(res);
@@ -53,7 +50,7 @@ export class CommonService {
           err => {
             observer.error(err);
           },
-          () => {}
+          () => { }
         );
     });
   }

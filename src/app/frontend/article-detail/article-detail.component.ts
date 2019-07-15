@@ -29,7 +29,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   getArticleDetail(_id: string) {
-    this.service.get('/article_detail', { id: _id }).subscribe(res => {
+    this.service.getData('/article_detail', { id: _id }).subscribe(res => {
       this.data = res.data;
       console.log(res);
     });

@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
     console.log(userInfo);
 
     // this.service.postData('/register', userInfo)
-    this.service.post('/signin', userInfo).subscribe(res => {
+    this.service.postData('/signin', userInfo).subscribe(res => {
       console.log(res);
     });
   }
 
   logout() {
-    this.service.get('/signout').subscribe(res => {
+    this.service.getData('/signout').subscribe(res => {
       console.log(res);
     });
   }

@@ -17,7 +17,7 @@ export class ArticleListComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: CommonService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
@@ -30,7 +30,7 @@ export class ArticleListComponent implements OnInit {
   getArticleList(page = 1, pagesize = 20) {
     this.loading = true;
     this.service
-      .get('/article_list', { page: page, pagesize: pagesize })
+      .getData('/article_list', { page: page, pagesize: pagesize })
       .subscribe(res => {
         this.itemList = res.data.list;
         this.loading = false;

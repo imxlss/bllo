@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     console.log(userInfo);
 
     // this.service.postData('/register', userInfo)
-    this.service.post('/register', userInfo).subscribe(res => {
+    this.service.postData('/register', userInfo).subscribe(res => {
       console.log(res);
     });
   }
