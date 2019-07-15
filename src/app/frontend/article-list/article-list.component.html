@@ -1,0 +1,6 @@
+<nz-spin [nzTip]="'loading...'" [nzSpinning]="loading">
+  {{category}}
+  <app-article-item *ngFor="let item of itemList" [data]='item'></app-article-item>
+</nz-spin>
+<nz-pagination class="pagination" [nzPageIndex]="page" [nzTotal]="total" (nzPageIndexChange)="getArticleList($event)"
+  nzSimple></nz-pagination>

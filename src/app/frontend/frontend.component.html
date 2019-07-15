@@ -1,0 +1,16 @@
+<div class="top">
+  <a routerLink="/back" [ngStyle]="{'position':'absolute','color':'transparent','left.vw':backButtonStyle.left , 'top.px':backButtonStyle.top}">back</a>
+</div>
+<nav class="navigation-container">
+  <ul class="navigation-bar" nz-menu [nzMode]="'horizontal'">
+    <li nz-menu-item *ngFor="let item of navText;index as i;" [nzSelected]="i === 0">
+      <a [routerLink]="item.link">{{item.text}}</a>
+    </li>
+  </ul>
+</nav>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+
+</div>

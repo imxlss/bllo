@@ -1,0 +1,16 @@
+<article>
+  <a href="javascript:void(0)">
+    <img src="{{data.img_url}}" alt="pic">
+  </a>
+  <h3>
+    <a class="title" href="javascript:void(0)" [routerLink]="['detail',data._id]">
+      {{data.title}}
+    </a>
+  </h3>
+  <p class="limit-p">{{data.summary}}</p>
+  <div class="bot-area">
+    <i nz-icon type="paper-clip" theme="outline"></i>
+    <a href="javascript:void(0)">{{data.tag}}</a>
+    <span class="time">{{data.createdAt}}</span>
+  </div>
+</article>

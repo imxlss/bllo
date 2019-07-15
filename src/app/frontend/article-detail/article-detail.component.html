@@ -1,0 +1,21 @@
+<div>
+  <h1 class="title">{{data?.title}}</h1>
+  <ul class="tag-list clearfix">
+    <li *ngIf="data?.isOriginal">
+      <a class="tag original-tag" href="javascript:void(0)">原创</a>
+    </li>
+    <li *ngIf="!data?.isOriginal">
+      <a class="tag no-original-tag" href="javascript:void(0)">转载</a>
+    </li>
+    <li *ngFor="let tag of data?.tag">
+      <a class="tag" href="javascript:void(0)">{{tag}}</a>
+    </li>
+  </ul>
+  <p class="content">{{data?.content}}</p>
+  <p class="content">{{data?.content}}</p>
+  <p class="content">{{data?.content}}</p>
+  <div class="markdown-body" [innerHtml]="markedHtml">
+  </div>
+</div>
+
+<nz-divider></nz-divider>
