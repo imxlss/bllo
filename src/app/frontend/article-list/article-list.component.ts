@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommonService } from 'src/app/service/common.service';
+import { HttpService } from 'src/service/http.service';
 
 @Component({
   selector: 'app-article-list',
@@ -16,8 +16,8 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: CommonService
-  ) { }
+    private httpService: HttpService
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
@@ -29,11 +29,14 @@ export class ArticleListComponent implements OnInit {
 
   getArticleList(page = 1, pagesize = 20) {
     this.loading = true;
-    this.service
-      .getData('/article_list', { page: page, pagesize: pagesize })
+    this.httpService
+      .getArticleList({
+        page,
+        pagesize
+      })
       .subscribe(res => {
-        this.itemList = res.data.list;
         this.loading = false;
+        this.itemList = res.result.data;
       });
   }
 }

@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/service/common.service';
 import marked from 'marked';
+import { HttpService } from 'src/service/http.service';
 
 @Component({
   selector: 'app-article-detail',
@@ -9,18 +10,18 @@ import marked from 'marked';
   styleUrls: ['./article-detail.component.less']
 })
 export class ArticleDetailComponent implements OnInit {
-  _id: string;
-  data: object;
+  _id: number;
+  detail: object;
   markedHtml: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private service: CommonService
+    private httpService: HttpService
   ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res => {
-      this._id = res.id;
+      this._id = +res.id;
     });
 
     this.markedHtml = marked("```console.log('marked.')```");
@@ -28,9 +29,9 @@ export class ArticleDetailComponent implements OnInit {
     this.getArticleDetail(this._id);
   }
 
-  getArticleDetail(_id: string) {
-    this.service.getData('/article_detail', { id: _id }).subscribe(res => {
-      this.data = res.data;
+  getArticleDetail(_id: number) {
+    this.httpService.articleDetailFor({ _id }).subscribe(res => {
+      this.detail = res.result.content;
       console.log(res);
     });
   }

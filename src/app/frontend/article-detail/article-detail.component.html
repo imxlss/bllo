@@ -1,19 +1,19 @@
 <div>
-  <h1 class="title">{{data?.title}}</h1>
+  <h1 class="title">{{detail?.title}}</h1>
   <ul class="tag-list clearfix">
-    <li *ngIf="data?.isOriginal">
+    <li *ngIf="detail?.isOriginal">
       <a class="tag original-tag" href="javascript:void(0)">原创</a>
     </li>
-    <li *ngIf="!data?.isOriginal">
+    <li *ngIf="!detail?.isOriginal">
       <a class="tag no-original-tag" href="javascript:void(0)">转载</a>
     </li>
-    <li *ngFor="let tag of data?.tag">
+    <li *ngFor="let tag of detail?.tag">
       <a class="tag" href="javascript:void(0)">{{tag}}</a>
     </li>
   </ul>
-  <p class="content">{{data?.content}}</p>
-  <p class="content">{{data?.content}}</p>
-  <p class="content">{{data?.content}}</p>
+  <p class="content">{{detail?.content}}</p>
+  <p class="content">{{detail?.content}}</p>
+  <p class="content">{{detail?.content}}</p>
   <div class="markdown-body" [innerHtml]="markedHtml">
   </div>
 </div>
